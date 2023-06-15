@@ -1,5 +1,15 @@
-/*
-function formatDate() {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
   let days = [
     "Sunday",
     "Monday",
@@ -10,30 +20,10 @@ function formatDate() {
     "Saturday",
   ];
 
-  let currentDate = new Date();
-  let currentDay = days[currentDate.getDay()];
-  let currentHour = currentDate.getHours();
-  let currentMinutes = currentDate.getMinutes();
-  let appTime = document.querySelector("#current-time");
-  if (currentMinutes >= 10) {
-    appTime.innerHTML = `${currentDay} ${currentHour}:${currentMinutes}`;
-  } else {
-    appTime.innerHTML =
-      appTime.innerHTML = `${currentDay} ${currentHour}:0${currentMinutes}`;
-  }
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
-updateTime();
-
-function updateCity(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#city-search");
-  let citySearched = searchInput.value;
-  let currentCity = document.querySelector("#current-city");
-  currentCity.innerHTML = citySearched;
-}
-
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", updateCity);
+/*
 
 function convertToFahrenheit(event) {
   event.preventDefault();
@@ -83,7 +73,7 @@ function showWeather(response) {
   let iconElement = document.querySelector("#icon");
 
   let celciusTemperature = response.data.main.temp;
-
+  console.log(celciusTemperature);
   temperatureElement.innerHTML = Math.round(celciusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
