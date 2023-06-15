@@ -72,28 +72,26 @@ let toCelcius = document.querySelector("#celcius");
 toFahrenheit.addEventListener("click", convertToFahrenheit);
 toCelcius.addEventListener("click", convertToCelcius);
 */
-//Homework week 5
+
 function showWeather(response) {
-  let currentAppTemperature = document.querySelector("#current-temp");
-  currentAppTemperature.innerHTML = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
 }
 
-function updateCity(event) {
+function search(city) {
+  let apiKey = "311f1f45fee82242ab4086372ab360f5";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function handleSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#city-search");
-  let citySearched = searchInput.value;
-  let capitalizedCitySearched =
-    citySearched.charAt(0).toUpperCase() + citySearched.slice(1);
-  let currentCity = document.querySelector("#current-city");
-  currentCity.innerHTML = capitalizedCitySearched;
-  let apiKey = "311f1f45fee82242ab4086372ab360f5";
-  let units = "metric";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=${units}&appid=${apiKey}`;
-  axios.get(url).then(showWeather);
+  search(searchInput.value);
 }
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", updateCity);
+searchForm.addEventListener("submit", handleSubmit);
 
 function showCurrentLocationWeather(response) {
   let currentAppTemperature = document.querySelector("#current-temp");
