@@ -23,45 +23,6 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
-/*
-
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let currentAppTemperature = document.querySelector(".current-temp");
-  if (currentAppTemperature.classList.contains("now-celcius")) {
-    let currentTemperature = Number(currentAppTemperature.innerHTML);
-    let updatedTemp = Math.round((currentTemperature * 9) / 5 + 32);
-    currentAppTemperature.innerHTML = updatedTemp;
-    currentAppTemperature.classList.remove("now-celcius");
-    currentAppTemperature.classList.add("now-fahrenheit");
-    let fahrenheitToggle = document.querySelector("#fahrenheit");
-    fahrenheitToggle.classList.add("bold");
-    let celciusToggle = document.querySelector("#celcius");
-    celciusToggle.classList.remove("bold");
-  }
-}
-function convertToCelcius(event) {
-  event.preventDefault();
-  let currentAppTemperature = document.querySelector(".current-temp");
-  if (currentAppTemperature.classList.contains("now-fahrenheit")) {
-    let currentTemperature = Number(currentAppTemperature.innerHTML);
-    let updatedTemp = Math.round(((currentTemperature - 32) * 5) / 9);
-    currentAppTemperature.innerHTML = updatedTemp;
-    currentAppTemperature.classList.remove("now-fahrenheit");
-    currentAppTemperature.classList.add("now-celcius");
-    let fahrenheitToggle = document.querySelector("#fahrenheit");
-    fahrenheitToggle.classList.remove("bold");
-    let celciusToggle = document.querySelector("#celcius");
-    celciusToggle.classList.add("bold");
-  }
-}
-
-let toFahrenheit = document.querySelector("#fahrenheit");
-let toCelcius = document.querySelector("#celcius");
-
-toFahrenheit.addEventListener("click", convertToFahrenheit);
-toCelcius.addEventListener("click", convertToCelcius);
-*/
 
 function showWeather(response) {
   let temperatureElement = document.querySelector("#current-temp");
@@ -73,7 +34,7 @@ function showWeather(response) {
   let iconElement = document.querySelector("#icon");
 
   let celciusTemperature = response.data.main.temp;
-  console.log(celciusTemperature);
+
   temperatureElement.innerHTML = Math.round(celciusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -85,6 +46,10 @@ function showWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  if (toFahrenheit.classList.contains("active")) {
+    toFahrenheit.classList.remove("active");
+    toCelcius.classList.add("active");
+  }
 }
 
 function search(city) {
@@ -103,8 +68,8 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 function showCurrentLocationWeather(response) {
-  let currentAppTemperature = document.querySelector("#current-temp");
-  currentAppTemperature.innerHTML = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let currentAppCity = document.querySelector("#current-city");
   let currentLocation = response.data.name;
   currentAppCity.innerHTML = currentLocation;
@@ -126,3 +91,38 @@ function getCurrentCity(event) {
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentCity);
+
+let temperatureElement = document.querySelector("#current-temp");
+console.log(temperatureElement.innerHTML);
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  if (toCelcius.classList.contains("active")) {
+    let currentTemperature = Number(temperatureElement.innerHTML);
+    let fahrenheitTemperature = (currentTemperature * 9) / 5 + 32;
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+    toFahrenheit.classList.add("active");
+    toCelcius.classList.remove("active");
+  }
+}
+function convertToCelcius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  if (toFahrenheit.classList.contains("active")) {
+    let currentTemperature = Number(temperatureElement.innerHTML);
+    let celciusTemperature = ((currentTemperature - 32) * 5) / 9;
+    temperatureElement.innerHTML = Math.round(celciusTemperature);
+
+    toFahrenheit.classList.remove("active");
+    toCelcius.classList.add("active");
+  }
+}
+
+let toFahrenheit = document.querySelector("#fahrenheit");
+toFahrenheit.addEventListener("click", convertToFahrenheit);
+let toCelcius = document.querySelector("#celcius");
+toCelcius.addEventListener("click", convertToCelcius);
+
+search("New York");
