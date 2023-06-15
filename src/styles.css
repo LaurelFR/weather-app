@@ -1,3 +1,6 @@
+#description {
+  text-transform: capitalize;
+}
 .weather-app {
   font-family: "Nunito", sans-serif;
   max-width: 700px;
@@ -17,20 +20,16 @@
   background: #0b71a0;
   color: #fff;
 }
+.current-location-button:hover {
+  background: #0b71a0;
+  color: #fff;
+  opacity: 0.7;
+}
 .current-temp {
   font-size: 5.5em;
   display: inline;
 }
-/*
-.unit-toggle {
-  text-decoration: none;
-}
-.temp-toggle {
-  position: relative;
-  top: -20%;
-  display: inline-block;
-}
-*/
+
 .temp-toggle {
   vertical-align: top;
 }

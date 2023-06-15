@@ -19,22 +19,6 @@
 <body>
     <div class="container">
         <div class="weather-app py-4 px-5 rounded-2 shadow">
-            <header>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Recent:</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Los Angeles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Chicago</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">London</a>
-                    </li>
-                </ul>
-            </header>
             <form id="search-form">
                 <div class="row">
                     <div class="col-8">
@@ -52,15 +36,15 @@
             <div class="row my-5">
                 <div class="col-4">
                     <h1 class="fw-bold" id="current-city">New York</h1>
-                    <h3 id="current-time">Monday 19:00</h3>
-                    <h3>Humidity: <span id="humidity"></span>%</h3>
-                    <h3>Wind: <span id="wind"></span>km/h</h3>
+                    <h5 id="current-time"></h5>
+                    <h5>Humidity: <span id="humidity"></span>%</h5>
+                    <h5>Wind: <span id="wind"></span>km/h</h5>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <img src="media/sun.svg" alt="sun" id="icon">
                 </div>
-                <div class="col-4">
-                    <h3 class="fw-bold" id="description">Sunny</h3>
+                <div class="col-5">
+                    <h4 class="fw-bold" id="description">Sunny</h4>
                     <h2 class="current-temp now-celcius" id="current-temp">22</h2>
                     <span class="temp-toggle">
                         <a href="#" class="unit-toggle" id="fahrenheit">°F</a> |
@@ -72,21 +56,21 @@
             </div>
             <div class="text-center">
                 <div class="row row-cols-5">
-                    <div class="col fs-4 fw-bold">Tues</div>
-                    <div class="col fs-4 fw-bold">Wed</div>
-                    <div class="col fs-4 fw-bold">Thurs</div>
-                    <div class="col fs-4 fw-bold">Fri</div>
-                    <div class="col fs-4 fw-bold">Sat</div>
+                    <div class="col fs-5 fw-bold">Tues</div>
+                    <div class="col fs-5 fw-bold">Wed</div>
+                    <div class="col fs-5 fw-bold">Thurs</div>
+                    <div class="col fs-5 fw-bold">Fri</div>
+                    <div class="col fs-5 fw-bold">Sat</div>
                     <div class="col"><img src="media/sun.svg" alt="sunny"></div>
                     <div class="col"><img src="media/partlycloudy.svg" alt="partly cloudy"></div>
                     <div class="col"><img src="media/partlycloudy.svg" alt="partly cloudy"></div>
                     <div class="col"><img src="media/partlycloudy.svg" alt="partly cloudy"></div>
                     <div class="col"><img src="media/partlycloudy.svg" alt="partly cloudy"></div>
-                    <div class="col fs-5">72°/53°</div>
-                    <div class="col fs-5">74°/59°</div>
-                    <div class="col fs-5">80°/63°</div>
-                    <div class="col fs-5">81°/66°</div>
-                    <div class="col fs-5">73°/58°</div>
+                    <div class="col fs-6">72°/53°</div>
+                    <div class="col fs-6">74°/59°</div>
+                    <div class="col fs-6">80°/63°</div>
+                    <div class="col fs-6">81°/66°</div>
+                    <div class="col fs-6">73°/58°</div>
                 </div>
             </div>
         </div>
