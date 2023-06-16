@@ -26,11 +26,11 @@
                             autocomplete="off">
                     </div>
                     <div class="col-2">
-                        <input type="submit" class="btn shadow-sm search-button" value="Search">
+                        <input type="submit" class="btn shadow-sm search-button w-100" value="Search">
                     </div>
                     <div class="col-2">
-                        <input type="submit" class="btn shadow-sm current-location-button" id="current-location-button"
-                            value="Current">
+                        <input type="submit" class="btn shadow-sm current-location-button w-100"
+                            id="current-location-button" value="📍">
                     </div>
                 </div>
             </form>
@@ -42,20 +42,22 @@
             </div>
             <div class="row my-1">
                 <div class="col-7">
-
-                    <img src="" alt="" id="icon">
-                    <h2 class="current-temp now-celcius" id="current-temp">22</h2>
-                    <span class="temp-toggle">
-                        <a href="#" class="unit-toggle" id="fahrenheit">°F</a> |
-                        <a href="#" class="unit-toggle active" id="celcius">°C</a>
-                    </span>
+                    <div class="d-flex">
+                        <img src="" alt="" id="icon">
+                        <h2 class="current-temp now-celcius" id="current-temp"></h2>
+                        <span class="temp-toggle">
+                            <a href="#" class="unit-toggle" id="fahrenheit">°F</a> |
+                            <a href="#" class="unit-toggle active" id="celcius">°C</a>
+                        </span>
+                    </div>
                 </div>
                 <div class="col-5">
-                    <h4 class="fw-bold" id="description">Sunny</h4>
+                    <h4 class="fw-bold" id="description"></h4>
                     <h5>Humidity: <span id="humidity"></span>%</h5>
                     <h5>Wind: <span id="wind"></span>km/h</h5>
                 </div>
             </div>
+            <hr />
             <div class="weather-forecast" id="forecast">
             </div>
         </div>

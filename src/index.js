@@ -33,7 +33,7 @@ function formatDay(timestamp) {
 
 function showForecast(response) {
   let forecast = response.data.daily;
-  console.log(forecast);
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -70,7 +70,6 @@ function getForecast(coordinates) {
 }
 
 function showWeather(response) {
-  console.log(response);
   let temperatureElement = document.querySelector("#current-temp");
   let cityElement = document.querySelector("#current-city");
   let descriptionElement = document.querySelector("#description");
@@ -110,22 +109,13 @@ function handleSubmit(event) {
   search(searchInput.value);
 }
 
-function showCurrentLocationWeather(response) {
-  let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
-  let currentAppCity = document.querySelector("#current-city");
-  let currentLocation = response.data.city;
-  currentAppCity.innerHTML = currentLocation;
-}
-
 function retrievePosition(position) {
   let apiKey = "0f6f0d6c3f5dca5d9628fobct0b2f432";
   let units = "metric";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let url = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&units=${units}&key=${apiKey}`;
-  console.log(url);
-  axios.get(url).then(showCurrentLocationWeather);
+  axios.get(url).then(showWeather);
 }
 
 function getCurrentCity(event) {

@@ -1,37 +1,37 @@
-#description {
+#description::first-letter {
   text-transform: capitalize;
+}
+#icon {
+  height: 100px;
+  width: 100px;
 }
 .weather-app {
   font-family: "Nunito", sans-serif;
   max-width: 700px;
   margin: 20px auto;
-  background: linear-gradient(to bottom, #f9e0d6 0%, #8acfef 100%);
+  background: #c6d2fb;
 }
 .search-button {
-  background: #0b71a0;
+  background: #4a437a;
   color: #fff;
 }
 .search-button:hover {
-  background: #0b71a0;
+  background: #4a437a;
   color: #fff;
   opacity: 0.7;
 }
 .current-location-button {
-  background: #0b71a0;
+  background: #4a437a;
   color: #fff;
 }
 .current-location-button:hover {
-  background: #0b71a0;
+  background: #4a437a;
   color: #fff;
   opacity: 0.7;
 }
 .current-temp {
   font-size: 5.5em;
   display: inline;
-}
-
-.temp-toggle {
-  vertical-align: top;
 }
 .unit-toggle {
   text-decoration: none;
@@ -53,6 +53,9 @@
 }
 .weather-forecast-temperature-min {
   opacity: 0.5;
+}
+hr {
+  border: 1px solid #4a437a;
 }
 footer {
   font-family: monospace;
